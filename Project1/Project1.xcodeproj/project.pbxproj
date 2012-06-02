@@ -16,6 +16,7 @@
 		9A75968F15798F600014A43A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75968E15798F600014A43A /* ViewController.m */; };
 		9A75969215798F600014A43A /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A75969015798F600014A43A /* ViewController_iPhone.xib */; };
 		9A75969515798F600014A43A /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A75969315798F600014A43A /* ViewController_iPad.xib */; };
+		9A75969D1579933E0014A43A /* DataLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75969C1579933E0014A43A /* DataLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		9A75968E15798F600014A43A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9A75969115798F600014A43A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		9A75969415798F600014A43A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		9A75969B1579933E0014A43A /* DataLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLayer.h; sourceTree = "<group>"; };
+		9A75969C1579933E0014A43A /* DataLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				9A75969015798F600014A43A /* ViewController_iPhone.xib */,
 				9A75969315798F600014A43A /* ViewController_iPad.xib */,
 				9A75968215798F5F0014A43A /* Supporting Files */,
+				9A75969B1579933E0014A43A /* DataLayer.h */,
+				9A75969C1579933E0014A43A /* DataLayer.m */,
 			);
 			path = Project1;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				9A75968815798F5F0014A43A /* main.m in Sources */,
 				9A75968C15798F600014A43A /* AppDelegate.m in Sources */,
 				9A75968F15798F600014A43A /* ViewController.m in Sources */,
+				9A75969D1579933E0014A43A /* DataLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

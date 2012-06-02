@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DataLayer.h"
 
 @implementation ViewController
 
@@ -20,6 +21,8 @@
 
 - (void)viewDidLoad
 {
+    stringArray = [[NSArray alloc] initWithObjects:@"Super Mario Brothers", @"Legend of Zelda", @"Kirby", @"Metroid", @"Megaman", @"Sonic the Hedgehog", @"Donkey Kong", @"Final Fantasy", @"Frogger", @"Pacman", nil];
+    dataLayer = [[DataLayer alloc] init];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -38,6 +41,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    appTitle.text = [dataLayer getInfo];
     [super viewDidAppear:animated];
 }
 
@@ -59,6 +63,28 @@
     } else {
         return YES;
     }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView2 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) 
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    static int count = 0;
+    
+    //cell.textLabel.text = [NSString stringWithFormat:@"count is %d", count];
+    cell.textLabel.text = (NSString*)[stringArray objectAtIndex:indexPath.row];
+    
+    count++;
+    return cell;
 }
 
 @end

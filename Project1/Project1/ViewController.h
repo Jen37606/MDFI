@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@class DataLayer;
 
+@interface ViewController : UIViewController
+{
+    DataLayer *dataLayer;
+    IBOutlet UILabel *appTitle;
+    IBOutlet UITableView *tableView;
+    NSArray *stringArray;
+}
 @end
