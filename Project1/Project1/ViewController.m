@@ -10,9 +10,14 @@
 #import "CustomTableCell.h"
 #import "SecondView.h"
 
+@interface ViewController ()
+@property (strong, nonatomic) SecondView *gameInfo;
+@end
+
 @implementation ViewController
 @synthesize games;
 @synthesize myTableView;
+@synthesize gameInfo;
 
 - (void)didReceiveMemoryWarning
 {
@@ -31,20 +36,58 @@
     return self;
 }
 
+- (id)initWithArray:(NSMutableArray *)array {
+    if (self = [super init]) {
+        games = [array copy];
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     NSDictionary *row1 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          @"Super Mario Brothers", @"Name", @"Nintendo", @"System", nil];
+                          @"Super Mario Bros.", @"Name", @"Nintendo", @"System", nil];
     NSDictionary *row2 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          @"Legend of Zelda", @"Name", @"Nintendo", @"System", nil];
+                          @"The Legend of Zelda", @"Name", @"Nintendo", @"System", nil];
     NSDictionary *row3 = [[NSDictionary alloc] initWithObjectsAndKeys:
                           @"Sonic the Hedgehog", @"Name", @"Sega Genisis", @"System", nil];
     NSDictionary *row4 = [[NSDictionary alloc] initWithObjectsAndKeys:
                           @"Final Fantasy", @"Name", @"Nintendo", @"System", nil];
     NSDictionary *row5 = [[NSDictionary alloc] initWithObjectsAndKeys:
                           @"Kirby", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row6 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Donkey Kong", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row7 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Cool Spot", @"Name", @"Sega Genesis", @"System", nil];
+    NSDictionary *row8 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Pokemon", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row9 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Mega Man", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row10 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Metroid", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row11 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Dr. Mario", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row12 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Zelda II: The Adventure of Link", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row13 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Sonic & Knuckles", @"Name", @"Sega Genesis", @"System", nil];
+    NSDictionary *row14 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Sonic the Hedgehog 2", @"Name", @"Sega Genesis", @"System", nil];
+    NSDictionary *row15 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Sonic 3d Blast", @"Name", @"Sega Genesis", @"System", nil];
+    NSDictionary *row16 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Castlvania", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row17 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Ninja Gaiden", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row18 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Pac-Man", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row19 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Teenage Mutant Ninja Turtles", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row20 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Tetris", @"Name", @"Nintendo", @"System", nil];
     
-    self.games = [[NSMutableArray alloc] initWithObjects:row1, row2, row3, row4, row5, nil];
+    self.games = [[NSMutableArray alloc] initWithObjects:row1, row2, row3, row4, row5, row6, row7, row8, row9, row10, row11, row12, row13, row14, row15, row16, row17, row18, row19, row20, nil];
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view, typically from a nib.
@@ -154,22 +197,30 @@
         
         [games removeObjectAtIndex:indexPath.row];
         [tableView reloadData];
-        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:true];
     }
 }
 
 
 
-
+// Go to Second View Controller
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"row=%d name=%@", indexPath.row, [games objectAtIndex:indexPath.row]);
     
-    SecondView *view = [[SecondView alloc] initWithNibName:@"SecondView" bundle:nil];
-    if (view != nil)
-    {
-        [self presentModalViewController:view animated:true];
-    }
+    gameInfo = [[SecondView alloc] initWithNibName:@"SecondView" bundle:nil];
+    NSUInteger row = [indexPath row];
+    NSDictionary *selectedGame = [self.games objectAtIndex:row];
+    
+    NSString *name = [selectedGame objectForKey:@"Name"];
+
+    
+    NSString *detailMessage = [[NSString alloc] initWithFormat:@"%@ is a fun game!", name];
+    gameInfo.message = detailMessage;
+    gameInfo.title = name;
+    [self.navigationController pushViewController:gameInfo animated:YES];
+    [self presentModalViewController:gameInfo animated:true];
+
+
 }
 
 @end

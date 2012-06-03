@@ -7,8 +7,12 @@
 //
 
 #import "SecondView.h"
+#import "ViewController.h"
 
 @implementation SecondView
+
+@synthesize label;
+@synthesize message;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,8 +48,15 @@
 }
 */
 
+- (void)viewWillAppear:(BOOL)animated {
+    label.text = message;
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidUnload
 {
+    self.label = nil;
+    self.message = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -10,6 +10,9 @@
 
 @interface SecondView : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *label;
+@property (copy, nonatomic) NSString *message;
+
 - (IBAction)back:(id)sender;
 
 
