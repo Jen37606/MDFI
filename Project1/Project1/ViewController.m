@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 #import "CustomTableCell.h"
+#import "SecondView.h"
 
 @implementation ViewController
 @synthesize games;
+@synthesize myTableView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -42,7 +44,7 @@
     NSDictionary *row5 = [[NSDictionary alloc] initWithObjectsAndKeys:
                           @"Kirby", @"Name", @"Nintendo", @"System", nil];
     
-    self.games = [[NSArray alloc] initWithObjects:row1, row2, row3, row4, row5, nil];
+    self.games = [[NSMutableArray alloc] initWithObjects:row1, row2, row3, row4, row5, nil];
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view, typically from a nib.
@@ -125,57 +127,49 @@
 
 
 // Editing Cells
-/*
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleDelete;
 }
 
-- (void)tableView:(UITableView *)tableView2 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+
+// Edit Button
+- (IBAction)editButton:(id)sender {
+    if (!myTableView.editing) {
+        [(UIButton*)sender setTitle:@"Done" forState:UIControlStateNormal];
+        [myTableView setEditing:YES animated:YES];
+    }else {
+        [(UIButton*)sender setTitle:@"Edit" forState:UIControlStateNormal];
+        [myTableView setEditing:NO animated:YES];
+    }
+}
+
+// Delete rows
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         NSLog(@"Delete row %d", indexPath.row);
-        [stringArray removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:true];
+        
+        [games removeObjectAtIndex:indexPath.row];
+        [tableView reloadData];
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:true];
     }
 }
- 
-*/
 
 
-// Each cell
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    CustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) 
-    {
-        //cell = [[CustomTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-       
-        NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"CustomCellView" owner:nil options:nil];
-        
-        for (UIView *view in views) 
-        {
-            if([view isKindOfClass:[CustomTableCell class]])
-            {
-                cell = (CustomTableCell*)view;
-            }
-        }
-        
-        
-    }
-    
-    //cell.textLabel.text = (NSString*)[stringArray objectAtIndex:indexPath.row];
 
-    return cell;
-}
-*/
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"row=%d name=%@", indexPath.row, [games objectAtIndex:indexPath.row]);
+    
+    SecondView *view = [[SecondView alloc] initWithNibName:@"SecondView" bundle:nil];
+    if (view != nil)
+    {
+        [self presentModalViewController:view animated:true];
+    }
 }
 
 @end

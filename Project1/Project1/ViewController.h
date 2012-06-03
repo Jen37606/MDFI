@@ -11,7 +11,9 @@
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-//-(IBAction)editButton:(id)sender;
-@property (strong, nonatomic) NSArray *games;
+-(IBAction)editButton:(id)sender;
+@property (strong, nonatomic) NSMutableArray *games;
+
+@property (strong, nonatomic) IBOutlet UITableView *myTableView;
 
 @end

@@ -19,6 +19,12 @@
 		9AA490A2157AE2E10017CA4B /* CustomTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA490A1157AE2E10017CA4B /* CustomTableCell.xib */; };
 		9AA490A4157AE3450017CA4B /* game.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA490A3157AE3450017CA4B /* game.png */; };
 		9AA490A7157AE3F20017CA4B /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA490A6157AE3F20017CA4B /* CustomTableCell.m */; };
+		9AA490A9157AEFDE0017CA4B /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA490A8157AEFDE0017CA4B /* SecondView.xib */; };
+		9AA490AF157AF2F60017CA4B /* SecondView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA490AE157AF2F60017CA4B /* SecondView.m */; };
+		9AA490B1157AF7440017CA4B /* game-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA490B0157AF7440017CA4B /* game-iphone.png */; };
+		9AA490B3157AF74A0017CA4B /* game-iphone-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA490B2157AF74A0017CA4B /* game-iphone-retina.png */; };
+		9AA490B5157AF7530017CA4B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA490B4157AF7530017CA4B /* Default.png */; };
+		9AA490B7157AF7580017CA4B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA490B6157AF7580017CA4B /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,13 @@
 		9AA490A3157AE3450017CA4B /* game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game.png; sourceTree = "<group>"; };
 		9AA490A5157AE3F20017CA4B /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
 		9AA490A6157AE3F20017CA4B /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
+		9AA490A8157AEFDE0017CA4B /* SecondView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondView.xib; sourceTree = "<group>"; };
+		9AA490AD157AF2F60017CA4B /* SecondView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondView.h; sourceTree = "<group>"; };
+		9AA490AE157AF2F60017CA4B /* SecondView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondView.m; sourceTree = "<group>"; };
+		9AA490B0157AF7440017CA4B /* game-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game-iphone.png"; sourceTree = "<group>"; };
+		9AA490B2157AF74A0017CA4B /* game-iphone-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game-iphone-retina.png"; sourceTree = "<group>"; };
+		9AA490B4157AF7530017CA4B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9AA490B6157AF7580017CA4B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +72,10 @@
 		9A75966C15798F5F0014A43A = {
 			isa = PBXGroup;
 			children = (
+				9AA490B6157AF7580017CA4B /* Default@2x.png */,
+				9AA490B4157AF7530017CA4B /* Default.png */,
+				9AA490B2157AF74A0017CA4B /* game-iphone-retina.png */,
+				9AA490B0157AF7440017CA4B /* game-iphone.png */,
 				9A75968115798F5F0014A43A /* Project1 */,
 				9A75967A15798F5F0014A43A /* Frameworks */,
 				9A75967815798F5F0014A43A /* Products */,
@@ -97,6 +114,9 @@
 				9AA490A1157AE2E10017CA4B /* CustomTableCell.xib */,
 				9AA490A5157AE3F20017CA4B /* CustomTableCell.h */,
 				9AA490A6157AE3F20017CA4B /* CustomTableCell.m */,
+				9AA490A8157AEFDE0017CA4B /* SecondView.xib */,
+				9AA490AD157AF2F60017CA4B /* SecondView.h */,
+				9AA490AE157AF2F60017CA4B /* SecondView.m */,
 			);
 			path = Project1;
 			sourceTree = "<group>";
@@ -167,6 +187,11 @@
 				9A75969515798F600014A43A /* ViewController_iPad.xib in Resources */,
 				9AA490A2157AE2E10017CA4B /* CustomTableCell.xib in Resources */,
 				9AA490A4157AE3450017CA4B /* game.png in Resources */,
+				9AA490A9157AEFDE0017CA4B /* SecondView.xib in Resources */,
+				9AA490B1157AF7440017CA4B /* game-iphone.png in Resources */,
+				9AA490B3157AF74A0017CA4B /* game-iphone-retina.png in Resources */,
+				9AA490B5157AF7530017CA4B /* Default.png in Resources */,
+				9AA490B7157AF7580017CA4B /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +206,7 @@
 				9A75968C15798F600014A43A /* AppDelegate.m in Sources */,
 				9A75968F15798F600014A43A /* ViewController.m in Sources */,
 				9AA490A7157AE3F20017CA4B /* CustomTableCell.m in Sources */,
+				9AA490AF157AF2F60017CA4B /* SecondView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
