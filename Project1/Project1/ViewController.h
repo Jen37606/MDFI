@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class DataLayer;
 
-@interface ViewController : UIViewController
-{
-    DataLayer *dataLayer;
-    IBOutlet UILabel *appTitle;
-    IBOutlet UITableView *tableView;
-    NSArray *stringArray;
-}
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+//-(IBAction)editButton:(id)sender;
+@property (strong, nonatomic) NSArray *games;
+
 @end

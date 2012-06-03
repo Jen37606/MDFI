@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "DataLayer.h"
+#import "CustomTableCell.h"
 
 @implementation ViewController
+@synthesize games;
 
 - (void)didReceiveMemoryWarning
 {
@@ -19,11 +20,31 @@
 
 #pragma mark - View lifecycle
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
-    stringArray = [[NSArray alloc] initWithObjects:@"Super Mario Brothers", @"Legend of Zelda", @"Kirby", @"Metroid", @"Megaman", @"Sonic the Hedgehog", @"Donkey Kong", @"Final Fantasy", @"Frogger", @"Pacman", nil];
-    dataLayer = [[DataLayer alloc] init];
+    NSDictionary *row1 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Super Mario Brothers", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row2 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Legend of Zelda", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row3 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Sonic the Hedgehog", @"Name", @"Sega Genisis", @"System", nil];
+    NSDictionary *row4 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Final Fantasy", @"Name", @"Nintendo", @"System", nil];
+    NSDictionary *row5 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"Kirby", @"Name", @"Nintendo", @"System", nil];
+    
+    self.games = [[NSArray alloc] initWithObjects:row1, row2, row3, row4, row5, nil];
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -41,7 +62,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    appTitle.text = [dataLayer getInfo];
+
     [super viewDidAppear:animated];
 }
 
@@ -65,26 +86,96 @@
     }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+
+////////////////////////////////////
+
+// Number of sections
+- (NSInteger)numberofSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView2 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//Number of rows
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return games.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellTableIdentifier = @"CellTableIdentifier";
+    static BOOL nibsRegistered = NO;
+    if (!nibsRegistered) {
+        UINib *nib = [UINib nibWithNibName:@"CustomTableCell" bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
+        nibsRegistered = YES;
+    }
+    
+    CustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                                 CellTableIdentifier];
+    
+    NSUInteger row = [indexPath row];
+    NSDictionary *rowData = [self.games objectAtIndex:row];
+    
+    cell.name = [rowData objectForKey:@"Name"];
+    cell.system = [rowData objectForKey:@"System"];
+    
+    return cell;
+}
+
+
+// Editing Cells
+/*
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView2 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSLog(@"Delete row %d", indexPath.row);
+        [stringArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:true];
+    }
+}
+ 
+*/
+
+
+// Each cell
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) 
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        //cell = [[CustomTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+       
+        NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"CustomCellView" owner:nil options:nil];
+        
+        for (UIView *view in views) 
+        {
+            if([view isKindOfClass:[CustomTableCell class]])
+            {
+                cell = (CustomTableCell*)view;
+            }
+        }
+        
+        
     }
-    static int count = 0;
     
-    //cell.textLabel.text = [NSString stringWithFormat:@"count is %d", count];
-    cell.textLabel.text = (NSString*)[stringArray objectAtIndex:indexPath.row];
-    
-    count++;
+    //cell.textLabel.text = (NSString*)[stringArray objectAtIndex:indexPath.row];
+
     return cell;
+}
+*/
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"row=%d name=%@", indexPath.row, [games objectAtIndex:indexPath.row]);
 }
 
 @end
