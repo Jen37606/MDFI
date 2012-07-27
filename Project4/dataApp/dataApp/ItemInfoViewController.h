@@ -11,7 +11,9 @@
 @interface ItemInfoViewController : UIViewController
 {
     IBOutlet UILabel *name;
+    IBOutlet UILabel *publisher;
     NSMutableString *outputText;
+    NSMutableString *outputText2;
 }
 
 //@property (strong, nonatomic) IBOutlet UILabel *name;

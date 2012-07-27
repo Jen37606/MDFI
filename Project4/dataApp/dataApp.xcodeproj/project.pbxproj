@@ -24,6 +24,10 @@
 		9AAC85FA15C0A11800020745 /* ItemInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAC85F915C0A11800020745 /* ItemInfoViewController.m */; };
 		9AAC85FC15C0A14700020745 /* ItemInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAC85FB15C0A14700020745 /* ItemInfoViewController.xib */; };
 		9AAC85FF15C0BA9B00020745 /* HeroInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAC85FE15C0BA9B00020745 /* HeroInfo.m */; };
+		9AAC860915C3529A00020745 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAC860815C3529A00020745 /* icon.png */; };
+		9AAC860B15C352A300020745 /* icon-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAC860A15C352A300020745 /* icon-retina.png */; };
+		9AAC860D15C352AB00020745 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAC860C15C352AB00020745 /* Default.png */; };
+		9AAC860F15C352B000020745 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAC860E15C352B000020745 /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,10 @@
 		9AAC85FB15C0A14700020745 /* ItemInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemInfoViewController.xib; sourceTree = "<group>"; };
 		9AAC85FD15C0BA9B00020745 /* HeroInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroInfo.h; sourceTree = "<group>"; };
 		9AAC85FE15C0BA9B00020745 /* HeroInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroInfo.m; sourceTree = "<group>"; };
+		9AAC860815C3529A00020745 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		9AAC860A15C352A300020745 /* icon-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-retina.png"; sourceTree = "<group>"; };
+		9AAC860C15C352AB00020745 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9AAC860E15C352B000020745 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,10 @@
 		9AAC85B715C09B9D00020745 = {
 			isa = PBXGroup;
 			children = (
+				9AAC860E15C352B000020745 /* Default@2x.png */,
+				9AAC860C15C352AB00020745 /* Default.png */,
+				9AAC860A15C352A300020745 /* icon-retina.png */,
+				9AAC860815C3529A00020745 /* icon.png */,
 				9AAC85CC15C09B9E00020745 /* dataApp */,
 				9AAC85C515C09B9D00020745 /* Frameworks */,
 				9AAC85C315C09B9D00020745 /* Products */,
@@ -189,6 +201,10 @@
 				9AAC85E815C09B9E00020745 /* FirstViewController.xib in Resources */,
 				9AAC85EB15C09B9E00020745 /* SecondViewController.xib in Resources */,
 				9AAC85FC15C0A14700020745 /* ItemInfoViewController.xib in Resources */,
+				9AAC860915C3529A00020745 /* icon.png in Resources */,
+				9AAC860B15C352A300020745 /* icon-retina.png in Resources */,
+				9AAC860D15C352AB00020745 /* Default.png in Resources */,
+				9AAC860F15C352B000020745 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

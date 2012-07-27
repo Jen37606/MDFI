@@ -52,12 +52,15 @@
 {
     self.title = theName;
     NSString *tempName = [[NSString alloc] initWithFormat:@"%@",theName];
-    NSString *tempPublisher = [[NSString alloc] initWithFormat:@"\n %@",publisherName];
+    NSString *tempPublisher = [[NSString alloc] initWithFormat:@"%@",publisherName];
     name.text = @"";
+    publisher.text = @"";
     outputText = [NSMutableString stringWithString:name.text];
+    outputText2 = [NSMutableString stringWithString:publisher.text];
     [outputText appendString:tempName];
-    [outputText appendString:tempPublisher];
+    [outputText2 appendString:tempPublisher];
     name.text = outputText;
+    publisher.text = outputText2;
     
 }
  

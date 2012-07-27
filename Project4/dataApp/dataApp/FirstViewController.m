@@ -22,7 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"First", @"First");
+        self.title = NSLocalizedString(@"List", @"List");
         self.tabBarItem.image = [UIImage imageNamed:@"first"];
     }
     return self;
@@ -39,9 +39,8 @@
 - (void)viewDidLoad
 {
     self.navigationController.navigationBar.tintColor=[UIColor blackColor];
-    //NSError *error = nil;
-    numItems = 0;
-    items = [[NSMutableArray alloc] init];
+    numItems = 0; // number of items in array
+    items = [[NSMutableArray alloc] init]; // items array
     url = [[NSURL alloc] initWithString:@"https://dl.dropbox.com/u/61951908/superheroes.xml"];
     request = [[NSURLRequest alloc] initWithURL:url];
     if(request != nil)
@@ -51,8 +50,13 @@
     
     requestData = [NSMutableData data];
 
-    //NSData *xmlData = [NSData dataWithContentsOfFile:@"xmlFile.xml"];
-    
+    // display xml data from url
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    if(parser != nil)
+    {
+        [parser setDelegate:self];
+        [parser parse];
+    }
      
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -60,16 +64,22 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-    if([elementName isEqualToString:@"hero"]){
+    if ([elementName isEqualToString:@"superheroes"])
+    {
+        NSString *itemsStr = [attributeDict valueForKey:@"items"];
+        if (itemsStr != nil)
+        {
+            numItems = [itemsStr intValue];
+        }
+    }else if([elementName isEqualToString:@"hero"]){
         NSString *name = [attributeDict valueForKey:@"name"];
         NSString *publisher = [attributeDict valueForKey:@"publisher"];
-        NSLog(@"%@", name);
+        NSLog(@"%@, %@", name, publisher);
         HeroInfo *hero = [[HeroInfo alloc] initWithName:name heroPublisher:publisher];
         if(hero != nil)
         {
             [items addObject:hero];
         }
-        NSLog(@"array: %@", items);
     }
 }
 
@@ -101,7 +111,7 @@
     NSString *requestString = [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding];
     if(requestString != nil)
     {
-        NSLog(@"%@", requestString);
+        //NSLog(@"%@", requestString);
         
         
         
@@ -115,14 +125,6 @@
             if (fullPath != nil)
             {
                 [requestData writeToFile:fullPath atomically:true];
-                //NSString *path = [[NSBundle mainBundle] pathForResource: @"xmlFile" ofType: @"xml"];
-                //NSData *xmlData = [NSData dataWithContentsOfFile:path];
-                NSXMLParser *parser = [[NSXMLParser alloc] initWithData:requestData];
-                if(parser != nil)
-                {
-                    [parser setDelegate:self];
-                    [parser parse];
-                } 
             }
         }
     }
@@ -176,7 +178,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {  
     itemInfo = [[ItemInfoViewController alloc] initWithNibName:@"ItemInfoViewController" bundle:nil];
-    
+    [self.navigationController pushViewController:itemInfo animated:YES];
     HeroInfo *heroName = [items objectAtIndex:indexPath.row];
     NSString *theName = [heroName valueForKey:@"name"];
     NSString *publisherName = [heroName valueForKey:@"publisher"];
@@ -184,7 +186,7 @@
     [itemInfo passName:theName publisher:publisherName];
 
     
-    [self.navigationController pushViewController:itemInfo animated:YES];
+    
 
     
 }
