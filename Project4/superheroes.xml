@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<superheroes>
+	<hero>
+		<name>Batman</name>
+		<publisher>DC Comics</publisher>
+	</hero>
+	<hero>
+		<name>Superman</name>
+		<publisher>DC Comics</publisher>
+	</hero>
+	<hero>
+		<name>Iron Man</name>
+		<publisher>Marvel</publisher>
+	</hero>
+	<hero>
+		<name>Thor</name>
+		<publisher>Marvel</publisher>
+	</hero>
+	<hero>
+		<name>Hulk</name>
+		<publisher>Marvel</publisher>
+	</hero>
+	<hero>
+		<name>Wonder Woman</name>
+		<publisher>DC Comics</publisher>
+	</hero>
+</superheroes>
